@@ -29,9 +29,9 @@ public class FileCleaner {
         return inputLines;
     }
 
-    public List<String> convertLinesToLowercase() {
+    public List<String> convertLinesToLowercase(List<String> input) {
         List<String> lowercaseLines = new ArrayList<>();
-        lowercaseLines = this.getInputLines().stream()
+        lowercaseLines = input.stream()
                 .map(String::toLowerCase)
                 .collect(Collectors.toList());
 
