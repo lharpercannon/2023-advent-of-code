@@ -8,7 +8,7 @@ public class FileCleaner {
 
     private FileReader input;
     public void readInTextFile() throws FileNotFoundException {
-        input = new FileReader("input.txt");
+        input = new FileReader("./dayoneinput.txt");
     }
 
     public void convertTextFileToArray() throws FileNotFoundException {
