@@ -3,7 +3,9 @@ package dayone;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class FileCleaner {
 
@@ -27,12 +29,28 @@ public class FileCleaner {
         return inputLines;
     }
 
-    public void convertLinesToLowercase() {
-        ArrayList<String> lowercaseLines = new ArrayList<>();
-        lowercaseLines = inputLines.stream().filter(inputLines -> {
-            inputLines.toLowerCase()
-        });
+    public List<String> convertLinesToLowercase() {
+        List<String> lowercaseLines = new ArrayList<>();
+        lowercaseLines = this.getInputLines().stream()
+                .map(String::toLowerCase)
+                .collect(Collectors.toList());
+
+        return lowercaseLines;
     }
 
+    public FileReader getInput() {
+        return input;
+    }
 
+    public void setInput(FileReader input) {
+        this.input = input;
+    }
+
+    public ArrayList<String> getInputLines() {
+        return inputLines;
+    }
+
+    public void setInputLines(ArrayList<String> inputLines) {
+        this.inputLines = inputLines;
+    }
 }
