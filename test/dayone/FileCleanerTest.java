@@ -66,4 +66,16 @@ public class FileCleanerTest {
         assertTrue(reducedLines.contains(11));
 
     }
+
+    @Test
+    void itCanSumUpElementsOfArray() {
+        FileCleaner fileCleaner = new FileCleaner();
+        List<Integer> lines = new ArrayList<>();
+        lines.add(4);
+        lines.add(1);
+        lines.add(1);
+        lines.add(1);
+        List<Integer> processedLines = fileCleaner.reduceToFirstAndLastNumbers(lines);
+        assertEquals(77, fileCleaner.sumArrayElements(processedLines));
+    }
 }
