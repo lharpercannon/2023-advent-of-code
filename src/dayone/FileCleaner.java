@@ -76,6 +76,16 @@ public class FileCleaner {
         return twoDigitLines;
     }
 
+    public Integer sumArrayElements(List<Integer> inputIntegers) {
+        Integer count = 0;
+
+        for (Integer i : inputIntegers) {
+            count = count + i;
+        }
+
+        return count;
+    }
+
     public FileReader getInput() {
         return input;
     }
