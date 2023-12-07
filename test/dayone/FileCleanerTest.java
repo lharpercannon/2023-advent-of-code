@@ -40,4 +40,42 @@ public class FileCleanerTest {
         assertTrue(lowercaseLines.contains("aksjjlka"));
         assertTrue(lowercaseLines.contains("aaa"));
     }
+
+    @Test
+    void itCanRemoveLettersFromLines() {
+        FileCleaner fileCleaner = new FileCleaner();
+        List<String> lines = new ArrayList<>();
+        lines.add("lh25jhk02nkjh2");
+        lines.add("4Fnkj22");
+        List<String> lowercasedLines = fileCleaner.convertLinesToLowercase(lines);
+        List<Integer> processedLines = fileCleaner.removeLettersFromLines(lowercasedLines);
+        assertTrue(processedLines.contains(25022));
+        assertTrue(processedLines.contains(422));
+    }
+
+    @Test
+    void itCanReduceLinesToTwoCharacters() {
+        FileCleaner fileCleaner = new FileCleaner();
+        List<Integer> lines = new ArrayList<>();
+        lines.add(3251235);
+        lines.add(2351);
+        lines.add(1);
+        List<Integer> reducedLines = fileCleaner.reduceToFirstAndLastNumbers(lines);
+        assertTrue(reducedLines.contains(35));
+        assertTrue(reducedLines.contains(21));
+        assertTrue(reducedLines.contains(11));
+
+    }
+
+    @Test
+    void itCanSumUpElementsOfArray() {
+        FileCleaner fileCleaner = new FileCleaner();
+        List<Integer> lines = new ArrayList<>();
+        lines.add(4);
+        lines.add(1);
+        lines.add(1);
+        lines.add(1);
+        List<Integer> processedLines = fileCleaner.reduceToFirstAndLastNumbers(lines);
+        assertEquals(77, fileCleaner.sumArrayElements(processedLines));
+    }
 }

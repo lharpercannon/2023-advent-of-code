@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import java.util.regex.*;
+
+
 
 public class FileCleaner {
 
@@ -36,6 +39,51 @@ public class FileCleaner {
                 .collect(Collectors.toList());
 
         return lowercaseLines;
+    }
+
+    public List<Integer> removeLettersFromLines(List<String> removeLettersInput) {
+        List<Integer> letterlessLines = new ArrayList<>();
+
+        for (String line : removeLettersInput) {
+            String processedLine = line.replaceAll("[a-z]","");
+            letterlessLines.add(Integer.parseInt(processedLine));
+        }
+
+        return letterlessLines;
+    }
+
+    public List<Integer> reduceToFirstAndLastNumbers(List<Integer> reduceDigitsInput) {
+        List<Integer> twoDigitLines = new ArrayList<>();
+
+        for (Integer line : reduceDigitsInput) {
+            String stringLine = line.toString();
+            int l = stringLine.length();
+
+            if (l == 1) {
+                String doubledLine = String.valueOf(line) + String.valueOf(line);
+                Integer convertedLine = Integer.parseInt(doubledLine);
+                twoDigitLines.add(convertedLine);
+            } else {
+                String backToString = line.toString();
+                String[] splitLine = backToString.split("");
+                String first = splitLine[0];
+                String last = splitLine[l-1];
+                String combinedLine = first + last;
+                Integer intLine = Integer.parseInt(combinedLine);
+                twoDigitLines.add(Integer.parseInt(combinedLine));
+            }
+        }
+        return twoDigitLines;
+    }
+
+    public Integer sumArrayElements(List<Integer> inputIntegers) {
+        Integer count = 0;
+
+        for (Integer i : inputIntegers) {
+            count = count + i;
+        }
+
+        return count;
     }
 
     public FileReader getInput() {
