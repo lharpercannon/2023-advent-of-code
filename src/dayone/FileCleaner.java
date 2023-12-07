@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import java.util.regex.*;
+
 
 public class FileCleaner {
 
@@ -36,6 +38,17 @@ public class FileCleaner {
                 .collect(Collectors.toList());
 
         return lowercaseLines;
+    }
+
+    public List<String> removeLettersFromLines(List<String> removeLettersInput) {
+        List<String> letterlessLines = new ArrayList<>();
+
+        for (String line : removeLettersInput) {
+            String processedLine = line.replaceAll("[a-z]","");
+            letterlessLines.add(processedLine);
+        }
+
+        return letterlessLines;
     }
 
     public FileReader getInput() {
