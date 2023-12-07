@@ -40,4 +40,16 @@ public class FileCleanerTest {
         assertTrue(lowercaseLines.contains("aksjjlka"));
         assertTrue(lowercaseLines.contains("aaa"));
     }
+
+    @Test
+    void itCanRemoveLettersFromLines() {
+        FileCleaner fileCleaner = new FileCleaner();
+        List<String> lines = new ArrayList<>();
+        lines.add("lh25jhk02nkjh2");
+        lines.add("4Fnkj22");
+        List<String> lowercasedLines = fileCleaner.convertLinesToLowercase(lines);
+        List<String> processedLines = fileCleaner.removeLettersFromLines(lowercasedLines);
+        assertTrue(processedLines.contains("25022"));
+        assertTrue(processedLines.contains("422"));
+    }
 }
