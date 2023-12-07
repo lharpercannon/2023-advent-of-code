@@ -51,6 +51,25 @@ public class FileCleaner {
         return letterlessLines;
     }
 
+    public List<String> reduceToFirstAndLastNumbers(List<String> reduceDigitsInput) {
+        List<String> twoDigitLines = new ArrayList<>();
+
+        for (String line : reduceDigitsInput) {
+            int l = line.length();
+
+            if (l == 1) {
+                String doubledLine = String.valueOf(line + line);
+                twoDigitLines.add(doubledLine);
+            } else {
+                char firstCharacter = line.charAt(0);
+                char lastCharacter = line.charAt(l - 1);
+                String combinedLine = String.valueOf(firstCharacter + lastCharacter);
+                twoDigitLines.add(combinedLine);
+            }
+        }
+        return twoDigitLines;
+    }
+
     public FileReader getInput() {
         return input;
     }
