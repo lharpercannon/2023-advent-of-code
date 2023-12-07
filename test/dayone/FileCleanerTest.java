@@ -52,4 +52,17 @@ public class FileCleanerTest {
         assertTrue(processedLines.contains("25022"));
         assertTrue(processedLines.contains("422"));
     }
+
+    @Test
+    void itCanReduceLinesToTwoCharacters() {
+        FileCleaner fileCleaner = new FileCleaner();
+        List<String> lines = new ArrayList<>();
+        lines.add("3251235");
+        lines.add("2351");
+        lines.add("1");
+        List<String> reducedLines = fileCleaner.reduceToFirstAndLastNumbers(lines);
+        assertTrue(reducedLines.contains("35"));
+        assertTrue(reducedLines.contains("21"));
+        assertTrue(reducedLines.contains("11"));
+    }
 }
